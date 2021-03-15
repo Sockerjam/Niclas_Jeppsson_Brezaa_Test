@@ -21,6 +21,9 @@ class userListVC: UIViewController {
     
     private func navigationControllerSetup(){
         
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.backgroundColor = .orange
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key:UIColor.white]
         
     }
 
