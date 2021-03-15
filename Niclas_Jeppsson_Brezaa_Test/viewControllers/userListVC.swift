@@ -9,7 +9,20 @@ import UIKit
 
 class userListVC: UIViewController {
     
+
+    private var layout:UICollectionViewCompositionalLayout = {
+        var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        configuration.backgroundColor = .white
+        return UICollectionViewCompositionalLayout.list(using: configuration)
+    }()
     
+    private var collectionView:UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.delegate = self
+        
+        return collectionView
+    }()
     
 
     override func viewDidLoad() {
@@ -17,13 +30,22 @@ class userListVC: UIViewController {
         
         navigationControllerSetup()
         
+        view.backgroundColor = .white
+        
+        
+        
     }
     
     private func navigationControllerSetup(){
         
+        let navBarApperance = UINavigationBarAppearance()
+        navBarApperance.backgroundColor = .orange
+        navBarApperance.largeTitleTextAttributes = [.foregroundColor:UIColor.white]
+        
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.backgroundColor = .orange
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key:UIColor.white]
+        navigationController?.navigationBar.standardAppearance = navBarApperance
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarApperance
+        
         
     }
 
