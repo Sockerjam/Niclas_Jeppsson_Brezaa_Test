@@ -12,6 +12,10 @@
 		922DC33D25FFC8D8001E2526 /* userListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922DC33C25FFC8D8001E2526 /* userListVC.swift */; };
 		922DC34225FFC8DA001E2526 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 922DC34125FFC8DA001E2526 /* Assets.xcassets */; };
 		922DC34525FFC8DA001E2526 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 922DC34325FFC8DA001E2526 /* LaunchScreen.storyboard */; };
+		922DC35325FFD0F2001E2526 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922DC35225FFD0F2001E2526 /* UserInfoModel.swift */; };
+		922DC35725FFD16B001E2526 /* UserInfoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922DC35625FFD16B001E2526 /* UserInfoImpl.swift */; };
+		922DC35C25FFD1CB001E2526 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922DC35B25FFD1CB001E2526 /* UserData.swift */; };
+		922DC36625FFD5D6001E2526 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922DC36525FFD5D6001E2526 /* Section.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		922DC34125FFC8DA001E2526 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		922DC34425FFC8DA001E2526 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		922DC34625FFC8DA001E2526 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		922DC35225FFD0F2001E2526 /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
+		922DC35625FFD16B001E2526 /* UserInfoImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoImpl.swift; sourceTree = "<group>"; };
+		922DC35B25FFD1CB001E2526 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		922DC36525FFD5D6001E2526 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,8 @@
 			children = (
 				922DC33825FFC8D8001E2526 /* AppDelegate.swift */,
 				922DC33A25FFC8D8001E2526 /* SceneDelegate.swift */,
+				922DC35125FFD0B5001E2526 /* ViewModel */,
+				922DC35A25FFD1B9001E2526 /* Model */,
 				922DC34F25FFCA2E001E2526 /* viewControllers */,
 				922DC34125FFC8DA001E2526 /* Assets.xcassets */,
 				922DC34325FFC8DA001E2526 /* LaunchScreen.storyboard */,
@@ -70,6 +80,24 @@
 				922DC33C25FFC8D8001E2526 /* userListVC.swift */,
 			);
 			path = viewControllers;
+			sourceTree = "<group>";
+		};
+		922DC35125FFD0B5001E2526 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				922DC35625FFD16B001E2526 /* UserInfoImpl.swift */,
+				922DC35225FFD0F2001E2526 /* UserInfoModel.swift */,
+				922DC36525FFD5D6001E2526 /* Section.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		922DC35A25FFD1B9001E2526 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				922DC35B25FFD1CB001E2526 /* UserData.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,7 +169,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				922DC35C25FFD1CB001E2526 /* UserData.swift in Sources */,
+				922DC35325FFD0F2001E2526 /* UserInfoModel.swift in Sources */,
 				922DC33D25FFC8D8001E2526 /* userListVC.swift in Sources */,
+				922DC36625FFD5D6001E2526 /* Section.swift in Sources */,
+				922DC35725FFD16B001E2526 /* UserInfoImpl.swift in Sources */,
 				922DC33925FFC8D8001E2526 /* AppDelegate.swift in Sources */,
 				922DC33B25FFC8D8001E2526 /* SceneDelegate.swift in Sources */,
 			);
