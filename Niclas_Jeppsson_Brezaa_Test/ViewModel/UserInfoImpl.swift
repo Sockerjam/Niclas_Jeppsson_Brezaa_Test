@@ -5,21 +5,56 @@
 //  Created by Niclas Jeppsson on 15/03/2021.
 //
 
-import Foundation
+import UIKit
 
 class UserInfoImpl:UserInfoModel {
     
-    private var dataSource:UICollectionViewDiffableDataSource<Section, User>?
+    private lazy var userInfo:[UserData] = []
     
-    func start(with dataSource: UICollectionViewDiffableDataSource<Section, User>) {
+    var userData:[UserData] {
+        userInfo
+    }
+    
+    private var dataSource:UICollectionViewDiffableDataSource<Section, UserData>?
+    
+    func start(with dataSource: UICollectionViewDiffableDataSource<Section, UserData>) {
         self.dataSource = dataSource
     }
     
-    func networking(with address:String) {
+    func networking(with urlAddress:String) {
         
-        let url = address
+       let request = URLRequest(url: URL(string: urlAddress)!)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            guard let data = data else {
+                print(error)
+                return
+            }
+            self.parseJSON(with: data)
+        }
+        
+        task.resume()
     }
     
+    private func parseJSON(with data: Data) {
+        let decoder = JSONDecoder()
+        do {
+            let decodedData = try decoder.decode([UserData].self, from: data)
+            userInfo = decodedData
+        } catch {
+            print(error)
+        }
+        
+        snapShot(userData: userData)
+    }
     
+    private func snapShot(userData:[UserData]){
+        var snapShot = NSDiffableDataSourceSnapshot<Section, UserData>()
+        
+        snapShot.appendSections([.main])
+        snapShot.appendItems(userData)
+        dataSource?.apply(snapShot)
+    }
     
 }

@@ -25,17 +25,18 @@ class userListVC: UIViewController {
         return collectionView
     }()
     
-    private lazy var cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, User> {
+    private lazy var cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, UserData> {
         cell, indexPath, user in
         
         var content = cell.defaultContentConfiguration()
-        content.text = user.username
+        content.text = user.name
+        content.image = UIImage(systemName: "person.circle")
         cell.contentConfiguration = content
         
     }
     
     
-    private lazy var dataSource = UICollectionViewDiffableDataSource<Section, User>(collectionView: collectionView) {
+    private lazy var dataSource = UICollectionViewDiffableDataSource<Section, UserData>(collectionView: collectionView) {
         collectionView, indexPath, user in
         collectionView.dequeueConfiguredReusableCell(using: self.cellRegistration, for: indexPath, item: user)
     }
@@ -56,6 +57,7 @@ class userListVC: UIViewController {
         
         navigationControllerSetup()
         setupView()
+        userInfoModel.networking(with: Constants.userApi)
         userInfoModel.start(with: dataSource)
         
         view.backgroundColor = .white
@@ -87,5 +89,14 @@ class userListVC: UIViewController {
 
 extension userListVC:UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let userDetailVC = UserDetailsVC()
+        userDetailVC.title = userInfoModel.userData[indexPath.item].username
+        userDetailVC.nameLabel.text = "Name: \(userInfoModel.userData[indexPath.item].name)"
+        userDetailVC.addressLabel.text = "City: \(userInfoModel.userData[indexPath.item].address.city)"
+        userDetailVC.emailLabel.text = "Email: \(userInfoModel.userData[indexPath.item].email)"
+        navigationController?.pushViewController(userDetailVC, animated: true)
+    }
 }
 

@@ -8,20 +8,14 @@
 import UIKit
 
 struct UserData: Hashable, Codable {
-    
-    var user:[User]
-    
-}
 
-struct User: Hashable {
-    
     var name:String
     var username:String
     var email:String
     var address:Address
 }
 
-struct Address: Hashable {
+struct Address: Hashable, Codable {
     
     var street:String
     var city:String
