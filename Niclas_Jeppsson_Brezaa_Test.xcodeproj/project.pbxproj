@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		922DC33925FFC8D8001E2526 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922DC33825FFC8D8001E2526 /* AppDelegate.swift */; };
 		922DC33B25FFC8D8001E2526 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922DC33A25FFC8D8001E2526 /* SceneDelegate.swift */; };
-		922DC33D25FFC8D8001E2526 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922DC33C25FFC8D8001E2526 /* ViewController.swift */; };
-		922DC34025FFC8D8001E2526 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 922DC33E25FFC8D8001E2526 /* Main.storyboard */; };
+		922DC33D25FFC8D8001E2526 /* userListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922DC33C25FFC8D8001E2526 /* userListVC.swift */; };
 		922DC34225FFC8DA001E2526 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 922DC34125FFC8DA001E2526 /* Assets.xcassets */; };
 		922DC34525FFC8DA001E2526 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 922DC34325FFC8DA001E2526 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -19,8 +18,7 @@
 		922DC33525FFC8D8001E2526 /* Niclas_Jeppsson_Brezaa_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Niclas_Jeppsson_Brezaa_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		922DC33825FFC8D8001E2526 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		922DC33A25FFC8D8001E2526 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		922DC33C25FFC8D8001E2526 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		922DC33F25FFC8D8001E2526 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		922DC33C25FFC8D8001E2526 /* userListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userListVC.swift; sourceTree = "<group>"; };
 		922DC34125FFC8DA001E2526 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		922DC34425FFC8DA001E2526 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		922DC34625FFC8DA001E2526 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,13 +56,20 @@
 			children = (
 				922DC33825FFC8D8001E2526 /* AppDelegate.swift */,
 				922DC33A25FFC8D8001E2526 /* SceneDelegate.swift */,
-				922DC33C25FFC8D8001E2526 /* ViewController.swift */,
-				922DC33E25FFC8D8001E2526 /* Main.storyboard */,
+				922DC34F25FFCA2E001E2526 /* viewControllers */,
 				922DC34125FFC8DA001E2526 /* Assets.xcassets */,
 				922DC34325FFC8DA001E2526 /* LaunchScreen.storyboard */,
 				922DC34625FFC8DA001E2526 /* Info.plist */,
 			);
 			path = Niclas_Jeppsson_Brezaa_Test;
+			sourceTree = "<group>";
+		};
+		922DC34F25FFCA2E001E2526 /* viewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				922DC33C25FFC8D8001E2526 /* userListVC.swift */,
+			);
+			path = viewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,7 +131,6 @@
 			files = (
 				922DC34525FFC8DA001E2526 /* LaunchScreen.storyboard in Resources */,
 				922DC34225FFC8DA001E2526 /* Assets.xcassets in Resources */,
-				922DC34025FFC8D8001E2526 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				922DC33D25FFC8D8001E2526 /* ViewController.swift in Sources */,
+				922DC33D25FFC8D8001E2526 /* userListVC.swift in Sources */,
 				922DC33925FFC8D8001E2526 /* AppDelegate.swift in Sources */,
 				922DC33B25FFC8D8001E2526 /* SceneDelegate.swift in Sources */,
 			);
@@ -146,14 +150,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		922DC33E25FFC8D8001E2526 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				922DC33F25FFC8D8001E2526 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		922DC34325FFC8DA001E2526 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -7,11 +7,21 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class userListVC: UIViewController {
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        navigationControllerSetup()
+        
+    }
+    
+    private func navigationControllerSetup(){
+        
+        
     }
 
 
