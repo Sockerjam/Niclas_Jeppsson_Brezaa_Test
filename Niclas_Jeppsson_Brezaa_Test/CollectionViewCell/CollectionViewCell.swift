@@ -37,7 +37,6 @@ class CollectionViewCell: UICollectionViewCell {
     func configure(userData:UserData, url:String){
         userName.text = userData.name
         userAvatar.imageFrom(url: URL(string: url)!)
-//        userAvatar.image = UIImage(systemName: "person.circle")
     }
     
     private func setupConstraints(){
