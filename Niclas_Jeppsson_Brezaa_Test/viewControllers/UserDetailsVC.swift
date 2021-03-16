@@ -9,10 +9,15 @@ import UIKit
 
 class UserDetailsVC: UIViewController {
     
+    var selectedUser:Int?
+    
+    var userPosts:[UserPosts] = []
+    var userComments:[UserComments] = []
+    
     var postPerUser:[UserPosts] = []
     var commentsPerPost:[UserComments] = []
     
-    private let tableView:UITableView = {
+   let tableView:UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "reusableCell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -55,13 +60,30 @@ class UserDetailsVC: UIViewController {
         return addressLabel
     }()
     
+   
+    var userDetailsImpl:UserDetailsImpl
+    var userCommentImpl:UserCommentImpl
+    
+    init(userDetailsImpl:UserDetailsImpl,userCommentImpl:UserCommentImpl ) {
+        self.userDetailsImpl = userDetailsImpl
+        self.userCommentImpl = userCommentImpl
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+        userDetailsImpl.networking(with: Constants.userPostApi)
+        userCommentImpl.networking(with: Constants.userCommentsApi)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        userDetailsImpl.delegate = self
+        userCommentImpl.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         view.backgroundColor = .white
@@ -95,6 +117,29 @@ class UserDetailsVC: UIViewController {
         ])
     }
     
+    func userPostSorted(i:Int) -> [UserPosts]{
+        var output:[UserPosts] = []
+        postPerUser.removeAll()
+        for posts in userPosts {
+            if posts.userId == i {
+                output.append(posts)
+            }
+        }
+        return output
+    }
+    
+    func userCommentsSorted(i: Int) -> [UserComments]{
+        
+        var userCommentsSorted:[UserComments] = []
+        
+        for comment in userComments {
+            if comment.postId == i {
+                userCommentsSorted.append(comment)
+            }
+        }
+        return userCommentsSorted
+    }
+    
 }
 
 extension UserDetailsVC:UITableViewDelegate {
@@ -116,4 +161,23 @@ extension UserDetailsVC:UITableViewDataSource{
     
 }
 
+extension UserDetailsVC:UserPostDelegate{
+    func updateUserPost(userData: [UserPosts]) {
+        DispatchQueue.main.async {
+            self.userPosts = userData
+            self.postPerUser = self.userPostSorted(i: self.selectedUser!)
+            self.tableView.reloadData()
+        }
+    }
+}
+
+extension UserDetailsVC:UserCommentsDelegate{
+    func updateUserComments(userComments: [UserComments]) {
+        DispatchQueue.main.async {
+            self.userComments = userComments
+            self.commentsPerPost = self.userCommentsSorted(i: self.selectedUser!)
+            self.tableView.reloadData()
+        }
+    }
+}
 

@@ -36,7 +36,10 @@ class CollectionViewCell: UICollectionViewCell {
     
     func configure(userData:UserData, url:String){
         userName.text = userData.name
-        userAvatar.imageFrom(url: URL(string: url)!)
+        DispatchQueue.main.async {
+            self.userAvatar.imageFrom(url: URL(string: url)!)
+        }
+        
     }
     
     private func setupConstraints(){

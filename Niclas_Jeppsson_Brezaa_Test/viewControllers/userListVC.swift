@@ -9,10 +9,7 @@ import UIKit
 
 class userListVC: UIViewController {
     
-    let userDetailVC = UserDetailsVC()
-    
-    var userPosts:[UserPosts] = []
-    var userComments:[UserComments] = []
+    let userDetailVC = UserDetailsVC(userDetailsImpl: UserDetailsImpl(), userCommentImpl: UserCommentImpl())
 
     private lazy var layout:UICollectionViewCompositionalLayout = {
         var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
@@ -37,13 +34,9 @@ class userListVC: UIViewController {
     }
     
     private var userInfoModel:UserInfoModel
-    private var userDetailsImpl:UserDetailsImpl
-    private var userCommentImpl:UserCommentImpl
     
     init(userInfoModel:UserInfoModel, userDetailsImpl:UserDetailsImpl, userCommentImpl: UserCommentImpl) {
         self.userInfoModel = userInfoModel
-        self.userDetailsImpl = userDetailsImpl
-        self.userCommentImpl = userCommentImpl
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -54,15 +47,10 @@ class userListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        userDetailsImpl.delegate = self
-        userCommentImpl.delegate = self
-        
         navigationControllerSetup()
         setupView()
         userInfoModel.networking(with: Constants.userApi)
         userInfoModel.start(with: dataSource)
-        userDetailsImpl.networking(with: Constants.userPostApi)
-        userCommentImpl.networking(with: Constants.userCommentsApi)
         
         view.backgroundColor = .white
         
@@ -88,37 +76,14 @@ class userListVC: UIViewController {
         
     }
     
-    private func userPostSorted(i:Int) -> [UserPosts]{
-        var output:[UserPosts] = []
-        userDetailVC.postPerUser.removeAll()
-        for posts in userPosts {
-            if posts.userId == i {
-                output.append(posts)
-            }
-        }
-        return output
-    }
-    
-    private func userCommentsSorted(i: Int) -> [UserComments]{
-        
-        var userCommentsSorted:[UserComments] = []
-        
-        for comment in userComments {
-            if comment.postId == i {
-                userCommentsSorted.append(comment)
-            }
-        }
-        return userCommentsSorted
-    }
 }
 
 extension userListVC:UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        userDetailVC.postPerUser = userPostSorted(i: indexPath.item + 1)
-        userDetailVC.commentsPerPost = userCommentsSorted(i: indexPath.item + 1)
-        userDetailVC.title = userInfoModel.userData[indexPath.item].username
+        userDetailVC.selectedUser = indexPath.item + 1
+        userDetailVC.title = "Username: \(userInfoModel.userData[indexPath.item].username)"
         userDetailVC.nameLabel.text = "Name: \(userInfoModel.userData[indexPath.item].name)"
         userDetailVC.addressLabel.text = "City: \(userInfoModel.userData[indexPath.item].address.city)"
         userDetailVC.emailLabel.text = "Email: \(userInfoModel.userData[indexPath.item].email)"
@@ -127,19 +92,5 @@ extension userListVC:UICollectionViewDelegate {
     }
 }
 
-extension userListVC:UserPostDelegate{
-    func updateUserPost(userData: [UserPosts]) {
-        DispatchQueue.main.async {
-            self.userPosts = userData
-        }
-    }
-}
 
-extension userListVC:UserCommentsDelegate{
-    func updateUserComments(userComments: [UserComments]) {
-        DispatchQueue.main.async {
-            self.userComments = userComments
-        }
-    }
-}
 
