@@ -28,7 +28,7 @@ class UserInfoImpl:UserInfoModel {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
             guard let data = data else {
-                print(error)
+                print(error!)
                 return
             }
             self.parseJSON(with: data)
