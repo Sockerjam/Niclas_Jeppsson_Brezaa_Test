@@ -11,5 +11,5 @@ protocol UserDetailsModel {
     
     var userData:[UserPosts]{ get }
     func networking(with address:String)
-    func start(with dataSource:UICollectionViewDiffableDataSource<Section, UserData>)
+    func start(with dataSource:UICollectionViewDiffableDataSource<Section, UserPosts>)
 }

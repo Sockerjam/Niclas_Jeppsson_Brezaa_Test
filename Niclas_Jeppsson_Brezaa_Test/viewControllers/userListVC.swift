@@ -91,7 +91,7 @@ extension userListVC:UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let userDetailVC = UserDetailsVC()
+        let userDetailVC = UserDetailsVC(userDetailsModel: UserDetailsImpl(), userCommentModel: UserCommentImpl(), userIDSelected: indexPath.item)
         userDetailVC.title = userInfoModel.userData[indexPath.item].username
         userDetailVC.nameLabel.text = "Name: \(userInfoModel.userData[indexPath.item].name)"
         userDetailVC.addressLabel.text = "City: \(userInfoModel.userData[indexPath.item].address.city)"

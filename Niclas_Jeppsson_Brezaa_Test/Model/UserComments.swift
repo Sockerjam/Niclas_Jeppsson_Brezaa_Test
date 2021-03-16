@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct UserComments: Codable {
+struct UserComments: Codable, Hashable {
     
-    var postid:Int
+    var postId:Int
     var id:Int
 }

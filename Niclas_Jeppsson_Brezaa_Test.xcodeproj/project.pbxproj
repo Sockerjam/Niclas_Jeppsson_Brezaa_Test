@@ -22,6 +22,8 @@
 		922DC37B260001EE001E2526 /* UserComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922DC37A260001EE001E2526 /* UserComments.swift */; };
 		922DC37E2600039E001E2526 /* UserDetailsImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922DC37D2600039E001E2526 /* UserDetailsImpl.swift */; };
 		922DC381260003C7001E2526 /* UserDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922DC380260003C7001E2526 /* UserDetailsModel.swift */; };
+		922DC38426001716001E2526 /* UserCommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922DC38326001716001E2526 /* UserCommentModel.swift */; };
+		922DC3882600176E001E2526 /* UserCommentImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922DC3872600176E001E2526 /* UserCommentImpl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		922DC37A260001EE001E2526 /* UserComments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserComments.swift; sourceTree = "<group>"; };
 		922DC37D2600039E001E2526 /* UserDetailsImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsImpl.swift; sourceTree = "<group>"; };
 		922DC380260003C7001E2526 /* UserDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsModel.swift; sourceTree = "<group>"; };
+		922DC38326001716001E2526 /* UserCommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCommentModel.swift; sourceTree = "<group>"; };
+		922DC3872600176E001E2526 /* UserCommentImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCommentImpl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,8 @@
 				922DC36525FFD5D6001E2526 /* Section.swift */,
 				922DC37D2600039E001E2526 /* UserDetailsImpl.swift */,
 				922DC380260003C7001E2526 /* UserDetailsModel.swift */,
+				922DC38326001716001E2526 /* UserCommentModel.swift */,
+				922DC3872600176E001E2526 /* UserCommentImpl.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -199,9 +205,11 @@
 				922DC35325FFD0F2001E2526 /* UserInfoModel.swift in Sources */,
 				922DC33D25FFC8D8001E2526 /* userListVC.swift in Sources */,
 				922DC37E2600039E001E2526 /* UserDetailsImpl.swift in Sources */,
+				922DC3882600176E001E2526 /* UserCommentImpl.swift in Sources */,
 				922DC36625FFD5D6001E2526 /* Section.swift in Sources */,
 				922DC37B260001EE001E2526 /* UserComments.swift in Sources */,
 				922DC35725FFD16B001E2526 /* UserInfoImpl.swift in Sources */,
+				922DC38426001716001E2526 /* UserCommentModel.swift in Sources */,
 				922DC33925FFC8D8001E2526 /* AppDelegate.swift in Sources */,
 				922DC3782600016D001E2526 /* UserPosts.swift in Sources */,
 				922DC37525FFF6D4001E2526 /* UserDetailsVC.swift in Sources */,

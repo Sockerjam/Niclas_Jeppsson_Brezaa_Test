@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct UserPosts: Codable {
+struct UserPosts: Codable, Hashable {
     
-    var body:String
+    var userId:Int
+    var title:String
     
 }

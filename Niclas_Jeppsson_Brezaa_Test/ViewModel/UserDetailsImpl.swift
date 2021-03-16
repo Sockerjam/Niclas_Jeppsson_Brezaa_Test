@@ -7,23 +7,30 @@
 
 import UIKit
 
-struct UserDetailsImpl:UserDetailsModel {
+class UserDetailsImpl: UserDetailsModel {
+
     
-    private lazy var userInfo:[UserPosts] = []
+    private var dataSource:UICollectionViewDiffableDataSource<Section, UserPosts>?
     
-    var userData: [UserPosts] {
+    var userInfo:[UserPosts] = []
+    
+    var userData:[UserPosts] {
         userInfo
+    }
+    
+    func start(with dataSource: UICollectionViewDiffableDataSource<Section, UserPosts>) {
+        self.dataSource = dataSource
     }
     
     func networking(with address: String) {
     
-        let request = URLRequest(url: URL(fileURLWithPath: address))
-        let task = URLSession.shared.dataTask(with: request) { data, error, response in
+        let request = URLRequest(url: URL(string: address)!)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {
                 print(error)
                 return
             }
-            parseJSON(with: data)
+            self.parseJSON(with: data)
         }
         
         task.resume()
@@ -37,11 +44,17 @@ struct UserDetailsImpl:UserDetailsModel {
         } catch {
             print(error)
         }
+        
+        print(userData.count)
+        
+        snapShot(userData: userData)
     }
     
-    func start(with dataSource: UICollectionViewDiffableDataSource<Section, UserData>) {
-        <#code#>
+    private func snapShot(userData:[UserPosts]){
+        var snapShot = NSDiffableDataSourceSnapshot<Section, UserPosts>()
+        snapShot.appendSections([.main])
+        snapShot.appendItems(userData)
+        dataSource?.apply(snapShot)
     }
-    
     
 }
