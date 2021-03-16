@@ -10,6 +10,7 @@ import Foundation
 struct UserPosts: Codable, Hashable {
     
     var userId:Int
+    var id:Int
     var title:String
     
 }

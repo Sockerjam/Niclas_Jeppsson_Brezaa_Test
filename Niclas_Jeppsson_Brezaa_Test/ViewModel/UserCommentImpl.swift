@@ -7,19 +7,19 @@
 
 import Foundation
 
-class UserCommentImpl:UserCommentModel {
+protocol UserCommentsDelegate {
+    func updateUserComments(userComments:[UserComments])
+}
+
+class UserCommentImpl {
     
-    private var userInfo:[UserComments] = []
-    
-    var userData: [UserComments] {
-        userInfo
-    }
+    var delegate:UserCommentsDelegate?
     
     func networking(with address: String) {
         let request = URLRequest(url: URL(string: address)!)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {
-                print(error)
+                print(error!)
                 return
             }
             self.parseJSON(with: data)
@@ -32,7 +32,7 @@ class UserCommentImpl:UserCommentModel {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode([UserComments].self, from: data)
-            userInfo = decodedData
+            delegate?.updateUserComments(userComments: decodedData)
         } catch {
             print(error)
         }

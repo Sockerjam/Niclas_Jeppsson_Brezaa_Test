@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: windowScene)
-        let vc = userListVC(userInfoModel: UserInfoImpl())
+        let vc = userListVC(userInfoModel: UserInfoImpl(), userDetailsImpl: UserDetailsImpl(), userCommentImpl: UserCommentImpl())
         vc.title = "Users"
         let nv = UINavigationController(rootViewController: vc)
         window?.rootViewController = nv

@@ -7,27 +7,22 @@
 
 import UIKit
 
-class UserDetailsImpl: UserDetailsModel {
+protocol UserPostDelegate {
+    func updateUserPost(userData:[UserPosts])
+}
 
+class UserDetailsImpl {
     
-    private var dataSource:UICollectionViewDiffableDataSource<Section, UserPosts>?
     
-    var userInfo:[UserPosts] = []
-    
-    var userData:[UserPosts] {
-        userInfo
-    }
-    
-    func start(with dataSource: UICollectionViewDiffableDataSource<Section, UserPosts>) {
-        self.dataSource = dataSource
-    }
+    var delegate:UserPostDelegate?
     
     func networking(with address: String) {
     
         let request = URLRequest(url: URL(string: address)!)
+        
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {
-                print(error)
+                print(error!)
                 return
             }
             self.parseJSON(with: data)
@@ -36,25 +31,17 @@ class UserDetailsImpl: UserDetailsModel {
         task.resume()
     }
     
+    
     private func parseJSON(with data:Data){
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode([UserPosts].self, from: data)
-            userInfo = decodedData
+            self.delegate?.updateUserPost(userData: decodedData)
+            
         } catch {
             print(error)
         }
         
-        print(userData.count)
-        
-        snapShot(userData: userData)
-    }
-    
-    private func snapShot(userData:[UserPosts]){
-        var snapShot = NSDiffableDataSourceSnapshot<Section, UserPosts>()
-        snapShot.appendSections([.main])
-        snapShot.appendItems(userData)
-        dataSource?.apply(snapShot)
     }
     
 }
